@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>樱花飘落</title>
+    <style> #petal {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ffcccc;
+        border-radius: 50%;
+        z-index: 1;
+        animation-name: petal-fall;
+        animation-timing-function: linear;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+
+    @keyframes petal-fall {
+        from {
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        to {
+            top: 110%;
+            left: 55%;
+            transform: translateX(-50%) rotate(720deg);
+        }
+    } </style>
+</head>
+<body>
+<div id="petal"></div>
+<script> for (let i = 0; i < 50; i++) {
+    setTimeout(function () {
+        let petal = document.getElementById('petal').cloneNode(true);
+        petal.style.left = Math.random() * 90 + 5 + '%';
+        petal.style.animationDelay = Math.random() * 4 + 's';
+        document.body.append(petal);
+    }, Math.random() * 4000);
+} </script>
+</body>
+</html>
